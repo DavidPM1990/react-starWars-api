@@ -12,7 +12,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+
+			people: [],
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,7 +40,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			getPeople: async () => {
+				const requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
+
+				try {
+					const response = await fetch("https://www.swapi.tech/api/people/", requestOptions);
+					const result = await response.json();
+					console.log(result);
+				} catch (error) {
+					console.error('Error:', error);
+				}
 			}
+
 		}
 	};
 };
