@@ -5,13 +5,14 @@ import { Context } from "../store/appContext";
 import { useState, useContext, useEffect } from "react";
 
 
-const CardStarWars = ({ person }) => {
+const VehicleCard = ({ vehicle }) => {
+
+
+    const { store, actions } = useContext(Context);
 
 
 
-
-
-    console.log("-----_>", person)
+    console.log("vehiculos ---->", vehicle)
 
 
     return (
@@ -20,10 +21,11 @@ const CardStarWars = ({ person }) => {
         >
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
-                <Card.Title></Card.Title>
+                <Card.Title>{vehicle.name}</Card.Title>
                 <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
+                    Color: <br />
+                    Cual quier cosa: <br />
+
                 </Card.Text>
                 <div className='d-flex justify-content-between'>
                     <Button variant="primary">Learn more!</Button>
@@ -35,4 +37,4 @@ const CardStarWars = ({ person }) => {
     )
 }
 
-export default CardStarWars;
+export default VehicleCard;
