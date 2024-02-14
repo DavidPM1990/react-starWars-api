@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const response = await fetch("https://www.swapi.tech/api/people/", requestOptions);
+					const response = await fetch("https://www.swapi.tech/api/people?page=1", requestOptions);
 
 					const result = await response.json();
 
@@ -85,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const response = await fetch("https://www.swapi.tech/api/planets", requestOptions);
+					const response = await fetch("https://www.swapi.tech/api/planets?page=1", requestOptions);
 					const result = await response.json();
 
 					const planetsWithDetails = await Promise.all(result.results.map(async planet => {
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try {
-					const response = await fetch("https://www.swapi.tech/api/vehicles", requestOptions);
+					const response = await fetch("https://www.swapi.tech/api/vehicles?page=1", requestOptions);
 					const result = await response.json();
 
 					const vehiclesWithDetails = await Promise.all(result.results.map(async vehicle => {
@@ -140,6 +140,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favorites: newFavorites });
 			},
 
+			getCharacterDetails: async (id) => {
+				const requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
+
+				try {
+					const response = await fetch(`https://www.swapi.tech/api/people/${id}`, requestOptions);
+					const result = await response.json();
+					return result.result.properties;
+				} catch (error) {
+					console.error('Error:', error);
+					return null;
+				}
+			},
+
+			getPlanetDetails: async (id) => {
+				const requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
+
+				try {
+					const response = await fetch(`https://www.swapi.tech/api/planets/${id}`, requestOptions);
+					const result = await response.json();
+					return result.result.properties;
+				} catch (error) {
+					console.error('Error:', error);
+					return null;
+				}
+			},
+
+			getVehicleDetails: async (id) => {
+				const requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				};
+
+				try {
+					const response = await fetch(`https://www.swapi.tech/api/vehicles/${id}`, requestOptions);
+					const result = await response.json();
+					return result.result.properties;
+				} catch (error) {
+					console.error('Error:', error);
+					return null;
+				}
+			},
 		}
 	};
 };

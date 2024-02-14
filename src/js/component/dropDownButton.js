@@ -4,11 +4,11 @@ import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-
-
 function DropDownButton() {
 
     const { store, actions } = useContext(Context);
+
+    const index = store.favorites.length;
 
     const handleRemoveFromFavorites = (index) => {
         actions.removeFromFavorites(index);
@@ -17,15 +17,21 @@ function DropDownButton() {
     return (
         <Dropdown>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
+                Favorites {index}
             </Dropdown.Toggle>
             <Dropdown.Menu>
                 {store.favorites.map((item, index) => (
                     <Dropdown.Item key={index} href="#">
-                        {item.name}
-                        <FontAwesomeIcon
-                            icon={faTrash}
-                            onClick={() => handleRemoveFromFavorites(index)} />
+                        <div className="d-flex justify-content-between">
+                            <div>{item.name}</div>
+                            <div>
+                                <FontAwesomeIcon
+                                    icon={faTrash}
+                                    onClick={() => handleRemoveFromFavorites(index)} />
+                            </div>
+                        </div>
+
+
                     </Dropdown.Item>
                 ))}
             </Dropdown.Menu>

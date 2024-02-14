@@ -14,12 +14,11 @@ export const Home = () => {
 		actions.getPlanets();
 	}, []);
 
-
 	return (
 		<div className="container">
 
 			<div className="container">
-				<h1>Characters</h1>
+				<h1 className="h1-color">Characters</h1>
 			</div>
 
 			<div className="scrollable-div">
@@ -30,7 +29,7 @@ export const Home = () => {
 			</div>
 
 			<div className="container mt-4">
-				<h1>Planets</h1>
+				<h1 className="h1-color">Planets</h1>
 			</div>
 
 			<div className="scrollable-div">
@@ -41,7 +40,7 @@ export const Home = () => {
 			</div>
 
 			<div className="container mt-4">
-				<h1>Vehicles</h1>
+				<h1 className="h1-color">Vehicles</h1>
 			</div>
 
 			<div className="scrollable-div">

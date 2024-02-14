@@ -2,11 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React from "react";
 import { Context } from "../store/appContext";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 
 
 const CardStarWars = ({ person, planet, vehicle }) => {
-
 
     const { store, actions } = useContext(Context);
 
@@ -14,12 +13,11 @@ const CardStarWars = ({ person, planet, vehicle }) => {
     console.log("store.planets:", store.planets);
     console.log("store.vehicles:", store.vehicles);
 
-
     const handleAddToFavorites = () => {
         const item = person || planet || vehicle;
         actions.addToFavorites(item);
-    };
 
+    };
 
     return (
         <Card style={{ width: '18rem' }} className='ms-4 mt-4 mb-4'>
@@ -49,12 +47,20 @@ const CardStarWars = ({ person, planet, vehicle }) => {
                     )}
 
                 </Card.Text>
-                <div className='d-flex justify-content-between'>
-                    <Button variant="primary">Learn more!</Button>
-                    <Button variant="primary" onClick={handleAddToFavorites}>💓</Button>
+                <div>
+                    <div className='d-flex justify-content-between'>
+                        <div>
+                            <Button variant="primary">Learn more!</Button>
+                        </div>
+                        <div>
+                            <Button variant="primary" onClick={handleAddToFavorites}>💓</Button>
+                        </div>
+
+                    </div>
                 </div>
+
             </Card.Body>
-        </Card>
+        </Card >
     );
 }
 
