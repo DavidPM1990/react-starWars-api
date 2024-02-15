@@ -2,17 +2,13 @@ import React, { useContext, useEffect } from "react";
 import "../../styles/home.css";
 import CardStarWars from "../component/card";
 import { Context } from "../store/appContext";
-
+import PlanetCard from "../component/cardPlanet";
+import VehicleCard from "../component/cardVehicle";
 
 export const Home = () => {
 
 	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		actions.getPeople();
-		actions.getVehicles();
-		actions.getPlanets();
-	}, []);
 
 	return (
 		<div className="container">
@@ -34,7 +30,7 @@ export const Home = () => {
 
 			<div className="scrollable-div">
 				{store.planets.map((planet, index) => (
-					<CardStarWars key={index} planet={planet} />
+					<PlanetCard key={index} planet={planet} />
 				))}
 
 			</div>
@@ -45,7 +41,7 @@ export const Home = () => {
 
 			<div className="scrollable-div">
 				{store.vehicles.map((vehicle, index) => (
-					<CardStarWars
+					<VehicleCard
 						key={index}
 						vehicle={vehicle}
 					/>

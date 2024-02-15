@@ -59,16 +59,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const result = await response.json();
 
-					const peopleWithDetails = await Promise.all(result.results.map(async person => {
-						const detailsResponse = await fetch(person.url, requestOptions);
+					setStore({ people: result.results });
 
-						const detailsResult = await detailsResponse.json();
-						return { ...person, details: detailsResult.result };
-					}));
-
-					setStore({ people: peopleWithDetails });
-
-					console.log("resultados de la llamada a la API:", peopleWithDetails);
 
 				} catch (error) {
 
@@ -76,7 +68,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
-
 
 			getPlanets: async () => {
 				const requestOptions = {
@@ -88,15 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch("https://www.swapi.tech/api/planets?page=1", requestOptions);
 					const result = await response.json();
 
-					const planetsWithDetails = await Promise.all(result.results.map(async planet => {
-						const detailsResponse = await fetch(planet.url, requestOptions);
-						const detailsResult = await detailsResponse.json();
-						return { ...planet, details: detailsResult.result };
-					}));
+					setStore({ planets: result.results });
 
-					setStore({ planets: planetsWithDetails });
-
-					console.log("Resultados de la llamada a la API de planetas:", planetsWithDetails);
 
 				} catch (error) {
 					console.log("Error:", error);
@@ -113,15 +97,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch("https://www.swapi.tech/api/vehicles?page=1", requestOptions);
 					const result = await response.json();
 
-					const vehiclesWithDetails = await Promise.all(result.results.map(async vehicle => {
-						const detailsResponse = await fetch(vehicle.url, requestOptions);
-						const detailsResult = await detailsResponse.json();
-						return { ...vehicle, details: detailsResult.result };
-					}));
+					setStore({ vehicles: result.results });
 
-					setStore({ vehicles: vehiclesWithDetails });
-
-					console.log("Resultados de la llamada a la API de vehículos:", vehiclesWithDetails);
 
 				} catch (error) {
 					console.error('Error:', error);
