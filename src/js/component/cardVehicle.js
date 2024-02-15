@@ -37,12 +37,13 @@ const VehicleCard = ({ vehicle }) => {
         fetchVehicleDetails();
     }, [vehicle.url]);
 
+    const vehicleUid = store.vehicles.find(v => v.name === vehicle.name)?.uid;
 
     return (
         <Card style={{ width: '18rem' }}
             className='ms-4 mt-4 mb-4'
         >
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicleUid}.jpg`} />
             <Card.Body>
                 <Card.Title>{vehicle.name}</Card.Title>
                 <Card.Text>

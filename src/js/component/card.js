@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 const PersonCard = ({ person }) => {
-    const { actions } = useContext(Context);
+    const { actions, store } = useContext(Context);
 
     const [personDetails, setPersonDetails] = useState({});
 
@@ -29,6 +29,11 @@ const PersonCard = ({ person }) => {
         fetchPersonDetails();
     }, [person.url]);
 
+    console.log("Buscando el UID:", store.people)
+
+    const personUid = store.people.find(p => p.name === person.name)?.uid;
+
+
 
     // console.log("-------->", person)
 
@@ -36,7 +41,7 @@ const PersonCard = ({ person }) => {
 
     return (
         <Card style={{ width: '18rem' }} className='ms-4 mt-4 mb-4'>
-            <Card.Img variant="top" src="" />
+            <Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${personUid}.jpg`} />
             <Card.Body>
                 <Card.Title>{person.name}</Card.Title>
                 <Card.Text>

@@ -5,7 +5,7 @@ import { Spinner } from "react-bootstrap";
 
 
 const DetailsVehicle = () => {
-    const { actions } = useContext(Context);
+    const { actions, store } = useContext(Context);
     const params = useParams();
     const [vehicleDetails, setVehicleDetails] = useState(null);
 
@@ -23,6 +23,9 @@ const DetailsVehicle = () => {
         fetchVehicleDetails();
     }, [params.id, actions]);
 
+    const vehicleUid = store.vehicles.find(p => p.name === vehicleDetails?.name)?.uid;
+
+
     return (
         <div>
             {vehicleDetails ? (
@@ -30,9 +33,10 @@ const DetailsVehicle = () => {
 
                     <div className="container d-flex flex-row justify-content-around ml-5 mr-5">
                         <div>
-                            <img alt="alternative image"></img>
+                            <img className="" alt="character" src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicleUid}.jpg`} />
+
                         </div>
-                        <div>
+                        <div className="container text-center" >
                             <h2>{vehicleDetails.name}</h2>
                             <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolo voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? </p>
                         </div>

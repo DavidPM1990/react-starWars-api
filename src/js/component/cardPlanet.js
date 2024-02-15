@@ -36,6 +36,7 @@ const PlanetCard = ({ planet }) => {
         fetchPlanetDetails();
     }, [planet.url]);
 
+    const planetUid = store.planets.find(p => p.name === planet.name)?.uid;
 
     // console.log("planetas ------->", planet)
 
@@ -43,7 +44,7 @@ const PlanetCard = ({ planet }) => {
         <Card style={{ width: '18rem' }}
             className='ms-4 mt-4 mb-4'
         >
-            <Card.Img variant="top" />
+            <Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${planetUid}.jpg`} />
             <Card.Body>
                 <Card.Title>{planet.name}</Card.Title>
                 <Card.Text>
