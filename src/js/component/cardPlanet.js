@@ -10,8 +10,6 @@ const PlanetCard = ({ planet }) => {
 
     const [planetDetails, setPlanetDetails] = useState({});
 
-
-
     const { store, actions } = useContext(Context);
 
     const handleAddToFavorites = () => {
@@ -38,13 +36,12 @@ const PlanetCard = ({ planet }) => {
 
     const planetUid = store.planets.find(p => p.name === planet.name)?.uid;
 
-    // console.log("planetas ------->", planet)
 
     return (
         <Card style={{ width: '18rem' }}
             className='ms-4 mt-4 mb-4'
         >
-            <Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${planetUid}.jpg`} />
+            <Card.Img variant="top" src={planetUid == 1 ? `https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Tatooine_%28fictional_desert_planet%29.jpg/220px-Tatooine_%28fictional_desert_planet%29.jpg` : `https://starwars-visualguide.com/assets/img/planets/${planetUid}.jpg`} />
             <Card.Body>
                 <Card.Title>{planet.name}</Card.Title>
                 <Card.Text>

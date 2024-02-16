@@ -9,11 +9,9 @@ import { Link } from "react-router-dom";
 
 const VehicleCard = ({ vehicle }) => {
 
-
     const { store, actions } = useContext(Context);
 
     const [vehicleDetails, setVehicleDetails] = useState({});
-
 
     const handleAddToFavorites = () => {
         const item = vehicle;

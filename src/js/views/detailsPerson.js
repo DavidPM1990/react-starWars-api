@@ -26,10 +26,6 @@ const DetailsPerson = () => {
 
     const personUid = store.people.find(p => p.name === personDetails?.name)?.uid;
 
-
-    // console.log("que eresssssss?????'", personDetails)
-
-
     return (
         <div>
             {personDetails ? (

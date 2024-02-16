@@ -32,7 +32,7 @@ const DetailsPlanet = () => {
 
                     <div className="container d-flex flex-row justify-content-around ml-5 mr-5">
                         <div>
-                            <img className="" alt="character" src={`https://starwars-visualguide.com/assets/img/planets/${planetUid}.jpg`} />
+                            <img className="" alt="character" src={planetUid == 1 ? `https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Tatooine_%28fictional_desert_planet%29.jpg/220px-Tatooine_%28fictional_desert_planet%29.jpg` : `https://starwars-visualguide.com/assets/img/planets/${planetUid}.jpg`} />
 
                         </div>
                         <div className="container text-center" >
@@ -71,7 +71,6 @@ const DetailsPlanet = () => {
                 </div>
             ) : (
                 <div className="d-flex justify-content-center"><Spinner animation="border" /></div>
-
             )}
         </div>
     );

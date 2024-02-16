@@ -29,15 +29,7 @@ const PersonCard = ({ person }) => {
         fetchPersonDetails();
     }, [person.url]);
 
-    console.log("Buscando el UID:", store.people)
-
     const personUid = store.people.find(p => p.name === person.name)?.uid;
-
-
-
-    // console.log("-------->", person)
-
-    // console.log("Todas las caracteristicas de la persona ---_>", personDetails)
 
     return (
         <Card style={{ width: '18rem' }} className='ms-4 mt-4 mb-4'>
